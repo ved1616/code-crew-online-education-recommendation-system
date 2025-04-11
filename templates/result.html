@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommended Professions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e2e8f0;
+        }
+        .card {
+            border-radius: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+<div class="container py-5">
+    <h2 class="text-center mb-4">Recommended Professions</h2>
+    <div class="row g-4">
+        {% for profession in professions %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card p-3">
+                    <h5>{{ profession }}</h5>
+                    <ul>
+                        {% for college in profession_college_map[profession] %}
+                            <li><a href="{{ college.url }}" target="_blank">{{ college.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
